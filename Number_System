@@ -1,0 +1,152 @@
+
+//Number System Codes qwithout the Recurssion 
+
+package Number_System;
+
+public class Num_Sys {
+	int Num_lenght(int a) {
+		int length = 0;
+		while (a > 0) {
+			a = a / 10;
+			length++;
+		}
+		return length;
+	}
+
+	int Num_Power(int base, int power) {
+		int answer = 1;
+		while (power > 0) {
+			answer = answer * base;
+			power--;
+		}
+		return answer;
+	}
+
+	int Reverse_Number_Function(int a) {
+		int rev_number = 0;
+		int temp;
+		while (a > 0) {
+			temp = a % 10;
+			rev_number = (rev_number * 10) + temp;
+			a = a / 10;
+		}
+		return rev_number;
+	}
+
+	boolean Is_Palindrome_function(int a) {
+		int num = Reverse_Number_Function(a);
+		boolean check = (a == num) ? true : false;
+		return check;
+	}
+
+	boolean Is_Armstrong_function(int a) {
+		int b, c, d, e;
+		b = a;
+		c = 0;
+		while (b > 0) {
+			e = Num_lenght(a);
+			d = b % 10;
+			c = c + Num_Power(d, e);
+			b /= 10;
+		}
+		boolean check = (a == c) ? true : false;
+		return check;
+
+	}
+
+}
+
+
+// Number System Codes with only the recurssion 
+package Number_System;
+
+public class Recurssion {
+	int factorial_num(int a) {
+		if (a == 0) {
+			return 1;
+		}
+		return a * factorial_num(a - 1);
+	}
+
+	boolean is_prime_number(int a, int num) {
+		if (a == num) {
+			return true;
+		} else if (a % num == 0) {
+			return false;
+		}
+		return is_prime_number(a, num + 1);
+
+	}
+
+	int Num_Power(int base, int power, int answer) {
+		if (power == 0) {
+			return answer;
+		}
+		return Num_Power(base, power - 1, answer * base);
+	}
+
+	int Num_lenght(int a, int length) {
+		if (a == 0) {
+			return length;
+		}
+		return Num_lenght(a / 10, length + 1);
+	}
+
+	int Reverse_Number_Function(int a, int reverse_number) {
+		if (a == 0) {
+			return reverse_number;
+		}
+		return Reverse_Number_Function(a / 10, reverse_number * 10 + a % 10);
+	}
+
+	int Is_Armstrong_function(int b, int length, int c) {
+		if  (b == 0)
+			{
+			return c ; 
+			}
+		return Is_Armstrong_function(b / 10, length, c + Num_Power(b % 10, length, 1));
+	}
+}
+
+
+
+// Number  system codes with the recurssion and ternary operator 
+package Number_System;
+
+public class Practice {
+
+	int factorial_function(int a) {
+		return (a == 0) ? 1 : a * factorial_function(--a);
+	}
+
+	boolean Is_Prime_Number(int a, int num) {
+		return (a == num) ? true : (a % num == 0) ? false : Is_Prime_Number(a, num + 1);
+	}
+
+	int Num_Power(int base, int power, int answer) {
+		return (power == 0) ? answer : Num_Power(base, power - 1, answer * base);
+	}
+
+	int Num_lenght(int a, int length) {
+		return (a == 0) ? length : Num_lenght(a / 10, length + 1);
+	}
+
+	int Reverse_Number_Function(int a, int reverse_number) {
+		return (a == 0) ? reverse_number : Reverse_Number_Function(a / 10, reverse_number * 10 + a % 10);
+	}
+
+	int fibonnaci_series(int temp, int a, int b, int i) {
+		System.out.print("  " + b);
+		return (i == 10) ? 0 : fibonnaci_series(a, b, b + a, i + 1);
+	}
+
+	int is_Armstrong_function(int b, int length, int c) {
+		return (b == 0) ? c : is_Armstrong_function(b / 10, length, c + Num_Power(b % 10, length, 1));
+	}
+
+	boolean Is_Armstrong_function(int b, int length, int c, int orignal_number) {
+		return ((orignal_number == c) && (b == 0)) ? true
+				: Is_Armstrong_function(b / 10, length, c + Num_Power(b % 10, length, 1), orignal_number);
+	}
+
+}
